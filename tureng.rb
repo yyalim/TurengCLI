@@ -6,12 +6,6 @@ require 'nokogiri'
 require 'open-uri'
 require 'text-table'
 
-# TODO
-# @en_tr_table veya @en_tr_table_full'ün boş geldiği durumlar var.
-# Örn: sss kelimesi. Bunlar bir şekilde handle edilecek.
-
-# fıı yazınca URI::InvalidURIError hatası verdi. acaba türkçe karakter sorunu mu var?
-
 class Tureng
   def initialize(w, u = "http://tureng.com/search/")
     @word, @url = w, u
@@ -85,27 +79,27 @@ class Tureng
     elsif status == "Term not found"
       puts "Aradığınız kelime bulunamadı."
     else
-      if @en_tr_table.present?
-        draw_results("en_to_tr")
-      else @en_tr_table_full.present?
-        draw_results("en_to_tr_full")
-      end
+      draw_results("en_to_tr")
+      draw_results("en_to_tr_full")
     end
   end
 end
 
+# Dead simple, quite basic interpretation
 def translate
   quit_values = ["q", "quit", "exit"]
-
   while true
     puts "Tureng'de aramak istediğiniz kelimeyi girin: "
-    input = gets.chomp
-
-    unless quit_values.include?(input)
-      c = Tureng.new("#{input}")
-      c.draw_all_results
-    else
-      break
+    begin
+      input = gets.chomp
+      unless quit_values.include?(input)
+        c = Tureng.new("#{input}")
+        c.draw_all_results
+      else
+        break
+      end
+    rescue
+      puts "Hatalı giriş, tekrar deneyin!"
     end
   end
 end
