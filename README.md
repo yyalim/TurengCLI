@@ -24,10 +24,10 @@ $ ruby tureng.rb
 
 ## Ekran Görüntüleri
 
-**Bulunan kelimeler için sonuçlar: **
+**Bulunan kelimeler için sonuçlar:**
 
 ![](http://i.imgur.com/kgOHeoF.png)
 
-** Kelime bulunamadığı zaman öneriler: **
+** Kelime bulunamadığı zaman öneriler:**
 
 ![](http://i.imgur.com/AbFkjmv.png)
