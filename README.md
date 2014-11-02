@@ -28,6 +28,6 @@ $ ruby tureng.rb
 
 ![](http://i.imgur.com/kgOHeoF.png)
 
-** Kelime bulunamadığı zaman öneriler:**
+**Kelime bulunamadığı zaman öneriler:**
 
 ![](http://i.imgur.com/AbFkjmv.png)
