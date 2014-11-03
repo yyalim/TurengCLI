@@ -4,7 +4,7 @@
 
 Bu betik en ilkel haliyle, konsolda çalışırken tekrar web tarayıcınıza geçmenize gerek kalmadan hızla bir kelimenin anlamına bakabilmenizi sağlar.
 
-Tureng'den bulunan tercümeler ve/veya kelime önerileri biçimlendirilerek ekrana bir tablo içerisinde basılır.
+[Tureng'den](http://tureng.com/) bulunan tercümeler ve/veya kelime önerileri biçimlendirilerek ekrana bir tablo içerisinde basılır.
 
 ## Kurulum
 
@@ -31,3 +31,7 @@ $ ruby tureng.rb
 **Kelime bulunamadığı zaman öneriler:**
 
 ![](http://i.imgur.com/AbFkjmv.png)
+
+## Uyarı
+
+Tüm kelimeler ve kelimelerin anlamları [tureng sözlükten](http://tureng.com/) çekilmektedir ve tamamı tureng sözlük veritabanlarında bulunmaktadır. Bu uygulama yalnızca konsol ortamından tureng'e erişmek isteyenlere yardımcı olmak için hazırlanmıştır. Görüntülediğiniz tüm içeriklerin yasal hakları vb. tureng'e aittir.
