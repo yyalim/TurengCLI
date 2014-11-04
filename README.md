@@ -12,7 +12,6 @@ Betiği çalıştırabilmek için sisteminizde nokogiri, open-uri ve text-table 
 
 ```
 $ [sudo] gem install nokogiri
-$ [sudo] gem install open-uri
 $ [sudo] gem install text-table
 ```
 
