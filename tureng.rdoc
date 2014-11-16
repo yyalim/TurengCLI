@@ -1,0 +1,5 @@
+= tureng
+
+Generate this with
+    tureng rdoc
+After you have described your command line interface
