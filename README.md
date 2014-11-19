@@ -116,6 +116,13 @@ $ bundle exec bin/tureng tr ruby
 error: undefined method `css' for nil:NilClass
 ```
 
+Türkçe karakterli çeviri yapıldığında bad uri hatası vermekte.
+
+```
+$ bundle exec bin/tureng tr öneri
+error: bad URI(is not URI?): http://tureng.com/search/öneri
+```
+
 ## Yapılacaklar
 
 * Proje ruby gem'ine çevirelerek kurulum kolaylaştırılacak.
