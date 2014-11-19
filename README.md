@@ -14,13 +14,13 @@ $ bundle install
 
 Rubygems'den indirmek için
 
-İnglizceden, türkçeye çeviri yapmak için:
-
 ```
 $ gem install tureng-cli
 $ gem install nokogiri
 $ gem install text-table
 ```
+
+İnglizceden, türkçeye çeviri yapmak için:
 
 ```
 $ tureng en ruby
@@ -109,7 +109,7 @@ O====O===========O==================O========================O
 
 ```
 
-Yardım ve mevcut komutları görüntülemek için:
+Yardımı ve mevcut komutları görüntülemek için:
 
 ```
 $ tureng --help
