@@ -4,7 +4,7 @@ msdundar'ın [tureng betiği](https://github.com/msdundar/tureng)'ne GLI gem'i k
 
 ## Kurulum ve Kullanım
 
-Henüz program ruby gem'ine çevrilmediğinden kaynaktan klonlayıp kullanabilirsiniz.
+~~Henüz program ruby gem'ine çevrilmediğinden kaynaktan klonlayıp kullanabilirsiniz.~~
 
 ```
 $ git clone https://github.com/alienaut/tureng
@@ -12,10 +12,18 @@ $ cd tureng
 $ bundle install
 ```
 
+Rubygems'den indirmek için
+
 İnglizceden, türkçeye çeviri yapmak için:
 
 ```
-$ bundle exec bin/tureng en ruby
+$ gem install tureng-cli
+$ gem install nokogiri
+$ gem install text-table
+```
+
+```
+$ tureng en ruby
 O====O==============O=========O=========================================O
 | ## |   Category   | English |                 Turkish                 |
 O====O==============O=========O=========================================O
@@ -37,7 +45,7 @@ O====O==============O=========O=========================================O
 Türkçeden, ingilizceye çeviri yapmak için:
 
 ```
-$ bundle exec bin/tureng tr yakut
+$ tureng tr yakut
 O====O==============O=========O===============O
 | ## |   Category   | Turkish |    English    |
 O====O==============O=========O===============O
@@ -54,7 +62,7 @@ O====O==============O=========O===============O
 Listelenen çevirileri sınırlamak için:
 
 ```
-$ bundle exec bin/tureng -l 5 en ruby
+$ tureng -l 5 en ruby
 O====O==============O=========O================O
 | ## |   Category   | English |    Turkish     |
 O====O==============O=========O================O
@@ -69,7 +77,7 @@ O====O==============O=========O================O
 Diğer terimler tablosunu görüntülemek için:
 
 ```
-$ bundle exec bin/tureng -f en ruby
+$ tureng -f en ruby
 O====O===========O==================O========================O
 | ## | Category  |     English      |        Turkish         |
 O====O===========O==================O========================O
@@ -104,7 +112,7 @@ O====O===========O==================O========================O
 Yardım ve mevcut komutları görüntülemek için:
 
 ```
-$ bundle exec bin/tureng --help
+$ tureng --help
 ```
 
 ## Bilinen Hatalar
@@ -112,14 +120,14 @@ $ bundle exec bin/tureng --help
 İngilizce bir kelilme türkçe olarak arandığında hata veriyor:
 
 ```
-$ bundle exec bin/tureng tr ruby
+$ tureng tr ruby
 error: undefined method `css' for nil:NilClass
 ```
 
 Türkçe karakterli çeviri yapıldığında bad uri hatası vermekte.
 
 ```
-$ bundle exec bin/tureng tr öneri
+$ tureng tr öneri
 error: bad URI(is not URI?): http://tureng.com/search/öneri
 ```
 
@@ -127,6 +135,7 @@ error: bad URI(is not URI?): http://tureng.com/search/öneri
 
 * Proje ruby gem'ine çevirelerek kurulum kolaylaştırılacak.
 * İngilizce Readme dosyası hazırlanacak.
+* Rdoc dökümantasyonu hazırlanacak
 
 ## Uyarı
 
