@@ -1,10 +1,7 @@
-# coding: utf-8
+# Authors: 
+#  Mustafa Serhat DÜNDAR <msdundars@gmail.com>
+#  Yusuf YALIM <yusufyalim@gmail.com>
 
-# Add requires for other files you add to your project here, so
-# you just need to require this one file in your bin file
-
-# Mustafa Serhat DÜNDAR
-# msdundars@gmail.com
 require 'tureng/version.rb'
 require 'nokogiri'
 require 'open-uri'
@@ -76,10 +73,10 @@ module Tureng
 
     def draw_table
       if status == "Did you mean that?"
-        puts "Aradığınız kelime bulunamadı. Bunlardan birini yazmak istemiş olabilir misiniz?"
+        puts status
         get_suggestions
       elsif status == "Term not found"
-        puts "Aradığınız kelime bulunamadı."
+        puts status
         return nil
       else
         fill_table
