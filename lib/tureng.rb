@@ -5,7 +5,7 @@
 
 # Mustafa Serhat DÜNDAR
 # msdundars@gmail.com
-# require 'tureng/version.rb'
+require 'tureng/version.rb'
 require 'nokogiri'
 require 'open-uri'
 require 'text-table'
@@ -36,6 +36,7 @@ module Tureng
     end
 
     def set_table_id
+      # sets table id by word language and 
       language = { en: 'english', tr: 'turkish' }
       "#{language[language_code]}#{table_type.capitalize}ResultsTable"
     end
@@ -55,14 +56,15 @@ module Tureng
       # remove heading from tr_tags and save it to another variable
       headings = tr_tags.shift.css('th').map(&:text)
 
-      # add headings to table
+      # add headings to table as "##, Category, word language, translation
+      # language".
       table.head = headings.values_at(1, 3, 4).unshift('##')
 
       # add translation to table
       tr_tags.each_with_index do |row, index|
+        # add line number, category, word and translation to table
         table.rows << row.css('td').map(&:text).values_at(0, 1, 3, 4)
-        # end each loop if we reach or above limit
-        # break if limit is set and index greater than or equal to limit
+        # end loop if limit is set and index greater than or equal to limit
         break if limit && index >= (limit - 1)
       end
     end
