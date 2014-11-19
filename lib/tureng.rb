@@ -67,7 +67,7 @@ module Tureng
     end
 
     def get_suggestions
-      table.head = ['Öneriler']
+      table.head = ['Suggestions']
       table.rows = @response.css('li a').map(&:text)
     end
 
