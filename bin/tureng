@@ -1,30 +1,27 @@
 #!/usr/bin/env ruby
 require 'gli'
-begin # XXX: Remove this begin/rescue before distributing your app
 require 'tureng'
-rescue LoadError
-  STDERR.puts "In development, you need to use `bundle exec bin/tureng` to run your app"
-  STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
-  STDERR.puts "Feel free to remove this message from bin/tureng now"
-  exit 64
-end
+
+# begin # XXX: Remove this begin/rescue before distributing your app
+# rescue LoadError
+#   STDERR.puts "In development, you need to use `bundle exec bin/tureng` to run your app"
+#   STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
+#   STDERR.puts "Feel free to remove this message from bin/tureng now"
+#   exit 64
+# end
 
 include GLI::App
+include Tureng
 
 program_desc 'Describe your application here'
 
 version Tureng::VERSION
 
-subcommand_option_handling :normal
-arguments :strict
+desc 'Define limit of translation to be shown'
+flag [:l, :limit], default_value: nil
 
-desc 'Describe some switch here'
-switch [:s,:switch]
-
-desc 'Describe some flag here'
-default_value 'the default'
-arg_name 'The name of the argument'
-flag [:f,:flagname]
+desc 'Search translation in "other terms" table'
+switch [:f, :full]
 
 pre do |global,command,options,args|
   # Pre logic here
@@ -33,6 +30,28 @@ pre do |global,command,options,args|
   # Use skips_pre before a command to skip this block
   # on that command only
   true
+end
+
+desc 'Translates English word to Turkish'
+command :en do |c|
+  c.action do |global_options, options, args|
+    settings = {}
+    settings[:language_code] = :en
+    settings[:limit] = global_options[:limit].to_i if global_options[:limit]
+    settings[:table_type] = 'full' if global_options[:full]
+    Translator.new(args.first, settings).draw_table
+  end
+end
+
+desc 'Translate Turkish word to English'
+command :tr do |c|
+  c.action do |global_options, options, args|
+    settings = {}
+    settings[:language_code] = :tr
+    settings[:limit] = global_options[:limit].to_i if global_options[:limit]
+    settings[:table_type] = 'full' if global_options[:f]
+    Translator.new(args.first, settings).draw_table
+  end
 end
 
 post do |global,command,options,args|
