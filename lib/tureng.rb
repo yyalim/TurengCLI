@@ -13,7 +13,7 @@ module Tureng
 
   class Translator
     attr_reader :word, :limit, :language_code, :table_type, :table, :status,
-      :table_tag, :response
+      :table_tag, :response, :uri
 
     def initialize(word, settings = {})
       @word = word
@@ -26,6 +26,7 @@ module Tureng
         horizontal_boundary: '|',
         boundary_intersection: 'O'
       )
+      @uri = URI.escape(SEARCH_URL + word)
       @table_id = set_table_id
       @response = get_response
       @status = @response.css('h1')[1].text.strip
@@ -39,7 +40,8 @@ module Tureng
     end
 
     def get_response
-      Nokogiri::HTML(open(SEARCH_URL + word), nil, 'utf-8')
+
+      Nokogiri::HTML(open(uri), nil, 'utf-8')
     end
 
     def parse_table_from_response
