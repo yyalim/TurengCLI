@@ -8,8 +8,6 @@ Rubygems'den indirmek için
 
 ```
 $ gem install tureng-cli
-$ gem install nokogiri
-$ gem install text-table
 ```
 
 Kaynaktan klonlayıp kullanmak için.

@@ -20,8 +20,8 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rake', '10.3.2')
   s.add_development_dependency('rdoc', '4.1.2')
   s.add_development_dependency('aruba', '0.6.1')
-  s.add_development_dependency('nokogiri', '1.6.4.1')
-  s.add_development_dependency('text-table', '1.2.3')
+  s.add_runtime_dependency('nokogiri', '1.6.4.1')
+  s.add_runtime_dependency('text-table', '1.2.3')
   s.add_runtime_dependency('gli','2.12.2')
   s.license = 'MIT'
 end
