@@ -54,6 +54,16 @@ command :tr do |c|
   end
 end
 
+desc 'Translate term Turkish, English or both.'
+command :translate do |c|
+  c.action do |global_options, options, args|
+    settings = {}
+    settings[:limit] = global_options[:limit].to_i if global_options[:limit]
+    settings[:table_type] = 'full' if global_options[:f]
+    Translator.new(args.first, settings).draw_table
+  end
+end
+
 post do |global,command,options,args|
   # Post logic here
   # Use skips_post before a command to skip this
