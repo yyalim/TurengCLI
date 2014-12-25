@@ -21,7 +21,7 @@ desc 'Define limit of translation to be shown'
 flag [:l, :limit], default_value: nil
 
 desc 'Search translation in "other terms" table'
-switch [:f, :full]
+switch [:o, :other]
 
 pre do |global,command,options,args|
   # Pre logic here
@@ -32,34 +32,12 @@ pre do |global,command,options,args|
   true
 end
 
-desc 'Translates English word to Turkish'
-command :en do |c|
-  c.action do |global_options, options, args|
-    settings = {}
-    settings[:language_code] = :en
-    settings[:limit] = global_options[:limit].to_i if global_options[:limit]
-    settings[:table_type] = 'full' if global_options[:full]
-    Translator.new(args.first, settings).draw_table
-  end
-end
-
-desc 'Translate Turkish word to English'
-command :tr do |c|
-  c.action do |global_options, options, args|
-    settings = {}
-    settings[:language_code] = :tr
-    settings[:limit] = global_options[:limit].to_i if global_options[:limit]
-    settings[:table_type] = 'full' if global_options[:f]
-    Translator.new(args.first, settings).draw_table
-  end
-end
-
 desc 'Translate term Turkish, English or both.'
 command :translate do |c|
   c.action do |global_options, options, args|
     settings = {}
     settings[:limit] = global_options[:limit].to_i if global_options[:limit]
-    settings[:table_type] = 'full' if global_options[:f]
+    settings[:table_type] = 'full' if global_options[:o]
     Translator.new(args.first, settings).draw_table
   end
 end
