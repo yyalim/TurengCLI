@@ -13,7 +13,7 @@ $ gem install tureng-cli
 Kaynaktan klonlayıp kullanmak için.
 
 ```
-$ git clone https://github.com/alienaut/tureng
+$ git clone https://github.com/alienaut/TurengCLI
 $ cd tureng
 $ bundle install
 ```
