@@ -23,4 +23,11 @@ class TestTranslator < MiniTest::Unit::TestCase
 		translator = Tureng::Translator.new('ihavenoideawhatiamwriting')
 		assert_output(/Term not found/) { translator.draw_table }
 	end
+
+	def test_empty_table
+		translator = Tureng::Translator.new('ruby')
+		translator.draw_table
+		assert !translator.turkish_table.rows.empty?
+		assert translator.english_table.rows.empty?
+	end
 end

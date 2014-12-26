@@ -81,17 +81,17 @@ module Tureng
         return false
       else
         @table_tag = parse_table_from_response(:en)
-        fill_table(@english_table)
+        fill_table(@turkish_table)
         
         @table_tag = parse_table_from_response(:tr)
-        fill_table(@turkish_table)
+        fill_table(@english_table)
       end
 
       puts "Turkish Terms"
-      puts @english_table.to_s
+      puts @turkish_table.to_s
       
       puts "English Terms"
-      puts @turkish_table.to_s
+      puts @english_table.to_s
     end
   end
 end
