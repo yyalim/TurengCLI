@@ -27,7 +27,21 @@ class TestTranslator < MiniTest::Unit::TestCase
 	def test_empty_table
 		translator = Tureng::Translator.new('ruby')
 		translator.draw_table
-		assert !translator.turkish_table.rows.empty?
+		refute translator.turkish_table.rows.empty?
 		assert translator.english_table.rows.empty?
+	end
+
+	def test_should_not_print_empty_table
+		translator = Tureng::Translator.new('ruby')
+		assert_output(/^(?!English Terms).*/) { translator.draw_table }
+		assert_output(/Turkish Terms/) { translator.draw_table }
+		
+		translator2 = Tureng::Translator.new('yakut')
+		assert_output(/English Terms/) { translator2.draw_table }
+		assert_output(/Turkish Terms/) { translator2.draw_table }
+
+		translator3 = Tureng::Translator.new('halı')
+		assert_output(/English Terms/) { translator3.draw_table }
+		assert_output(/^(?!English Terms).*/) { translator3.draw_table }
 	end
 end

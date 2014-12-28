@@ -86,12 +86,16 @@ module Tureng
         @table_tag = parse_table_from_response(:tr)
         fill_table(@english_table)
       end
-
-      puts "Turkish Terms"
-      puts @turkish_table.to_s
       
-      puts "English Terms"
-      puts @english_table.to_s
+      unless @turkish_table.rows.empty?
+        puts "Turkish Terms"
+        puts @turkish_table.to_s
+      end
+      
+      unless @english_table.rows.empty?
+        puts "English Terms"
+        puts @english_table.to_s
+      end
     end
   end
 end
